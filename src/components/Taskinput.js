@@ -3,13 +3,13 @@ import { Form, Button } from "react-bootstrap";
 
 export function Taskinput({ addTask }) {
   const [task, setTask] = useState("");
+  const [categorie, setCategorie] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (task.trim() !== "") {
-      addTask(task);
-      setTask("");
-    }
+    addTask([task, categorie]);
+    setTask("");
+    setCategorie("");
   };
 
   return (
@@ -21,8 +21,19 @@ export function Taskinput({ addTask }) {
           placeholder="Ingrese su tarea"
           onChange={(e) => setTask(e.target.value)}
         />
+        <Form.Control
+          type="text"
+          value={categorie}
+          placeholder="Ingrese su categoria"
+          onChange={(e) => setCategorie(e.target.value)}
+        />
       </Form.Group>
-      <Button variant="primary" type="submit" className="mt-2">
+      <Button
+        variant="primary"
+        type="submit"
+        className="mt-2"
+        disabled={!(task.trim() !== "" && categorie.trim() !== "")}
+      >
         Añadir
       </Button>
     </Form>
