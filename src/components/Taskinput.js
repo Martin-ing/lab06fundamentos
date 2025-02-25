@@ -29,10 +29,11 @@ export function Taskinput({ addTask }) {
         />
       </Form.Group>
       <Button
-        variant="primary"
+        variant="secondary"
         type="submit"
         className="mt-2"
         disabled={!(task.trim() !== "" && categorie.trim() !== "")}
+        style={{ backgroundColor: "purple", borderColor: "purple" }}
       >
         Añadir
       </Button>

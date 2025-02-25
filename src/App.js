@@ -8,7 +8,7 @@ import { Menu } from "./components/Menu";
 export default function App() {
   const [tasks, setTasks] = useState([]);
   const [categorias, setCategorias] = useState([]);
-  const [scategorie, setScategorie] = useState("");
+  const [scategorie, setScategorie] = useState("todas");
   const [categoriasunicas, setCategoriasunicas] = useState([]);
 
   const addTask = (task) => {
@@ -28,7 +28,11 @@ export default function App() {
     <Container className="mt-4">
       <h2>Administrador de tareas</h2>
       <Taskinput addTask={addTask} />
-      <Menu categorias={categoriasunicas} scategorie={scategorie} />
+      <Menu
+        categorias={categoriasunicas}
+        scategorie={scategorie}
+        setScategorie={setScategorie}
+      />
       <Tasklist tasks={tasks} removeTask={removeTask} scategorie={scategorie} />
     </Container>
   );
